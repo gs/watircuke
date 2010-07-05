@@ -173,7 +173,36 @@ module WatirCukeHelpers
       else
         fail("Sorry, I wasn't able to find the " + "'#{what}'" + " element ")
     end
+  end                  
+  
+  def find_span(what,with)
+       case
+         
+             when @browser.span(:id, what).exists?
+                  @browser.span(:id, what) == with     
+
+             when @browser.span(:name, what).exists?
+                  @browser.span(:name, what) == with
+
+             when @browser.span(:value, what).exists?
+                  @browser.span(:value, what) == with
+
+             when @browser.span(:index, what).exists?
+                  @browser.span(:index, what) == with
+
+             when @browser.span(:class, /(^|\s)#{what}(\s|$)/).exists?
+                 @browser.span(:class, /(^|\s)#{what}(\s|$)/) == with
+         
+         
+      # when @browser.span(:class, what).exists?
+      #      @browser.span(:class, what).text == with
+       else     
+           fail("Sorry, I wasn't able to find the " + "'#{what}'" + " element with " + "'#{with}'")
+      end  
   end
+  
+  
+  
 end
 
 World(WatirCukeHelpers)

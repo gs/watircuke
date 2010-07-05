@@ -30,6 +30,10 @@ Given /I fill in the text field "(.*)" with "(.*)"/ do |what, with|
   find_text_field(what, with)
 end
 
+Then /I should see the span "(.*)" with "(.*)"/ do |what, with|
+  find_span(what, with)
+end
+
 Then /^I should (NOT )?see the sentence "([^\"]*)"$/ do |visibility, what|
   expected = (visibility.to_s.strip == 'NOT') ? assert_false(@browser.contains_text(what)) : assert(@browser.contains_text(what))
 end

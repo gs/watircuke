@@ -3,6 +3,10 @@ module Paths
     case page_name
     # @environment comes from env.rb where it is set to "http://"
       #Test any external site
+      
+    when /the betterbecool/i
+      @environment + "www.betterbecool.com"
+      
       when /the google home page/i
         @environment + "google.com"
       
