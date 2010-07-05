@@ -9,18 +9,10 @@ module Paths
       
       when /the google home page/i
         @environment + "google.com"
-      
-      when /the watircuke page/i
-        @environment + "richdownie.com/watircuke"
-
       #Test any of your local apps
       when /the localhost page/i
         @environment + "localhost:3000"
         
-      #Test any of your local apps on passenger
-      when /the passenger page/i
-        @environment + "richdownie1.local/watircuke"
-
       when /the youtube page/i
         @environment + "youtube.com"
         
