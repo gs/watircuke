@@ -10,6 +10,34 @@ Once installed just run "cucumber features" in Safari, Firefox, Watir (see featu
 
 
 **cukewatir maximizes the Gherkin speak and minimizes the Watir code.    
+                             
+
+Currently supported sentences: 
+
+Actions:
+
+ I click the "some" button  
+ I click the "some" checkbox  
+ I click the "some" image  
+ I click the "some" link  
+ I click the "some" radio button  
+ I click row "some" in the "some" table  
+ I select "some" from "from list"  
+ I fill in the text field "text field name" with "some text"
+
+
+
+Check results: 
+Then I should see the span "some class" with "some text"
+Then I should (NOT )?see the sentence "some sentance" 
+Then I should (NOT )?see the text "some text"
+
+Paths redirection:
+I am redirected to "some"  
+I am on "page" 
+I go to "some url"
+I sleep for "some"
+
 
 License:
 
