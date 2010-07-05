@@ -1,12 +1,36 @@
 INSTALL
-
+         
+First be sure to have installed Ruby(1.8.7) and RubyGems
+       
 Cucumber:
-http://wiki.github.com/aslakhellesoy/cucumber/install
+gem install cucumber
 
-Watir ~ Firewatir ~ Safariwatir:
-http://wtr.rubyforge.org/install.html
+Watir:
+gem install Watir
 
-Once installed just run "cucumber features" in Safari, Firefox, Watir (see features/support/env.rb)
+FireWatir:
+gem install firewatir
+
+JSSH for FireWatir:
+http://wiki.openqa.org/display/WTR/FireWatir+Installation
+                                                         
+SafariWatir + AppScript:
+gem install rb-appscript
+gem install safariwatir
+                        
+Syntax highlight in html cucumber output:
+gem install syntax 
+
+Textmate syntax recognition and snippets
+
+http://github.com/bmabey/cucumber-tmbundle
+                                
+
+
+
+How to run:
+
+cucumber . -f html -o output.html
 
 
 **cukewatir maximizes the Gherkin speak and minimizes the Watir code.    
@@ -42,5 +66,4 @@ I sleep for "some"
 License:
 
 MIT
-                       
-Forked from Rich Downie
+                                            
