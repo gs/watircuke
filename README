@@ -40,15 +40,15 @@ Currently supported sentences:
 
 Actions:
 
- I click the "some" button  
- I click the "some" checkbox  
- I click the "some" image  
- I click the "some" link  
- I click the "some" radio button  
+ I "click" the "some" button  
+ I "click" the "some" checkbox  
+ I "click" the "some" image  
+ I "click" the "some" link  
+ I "click" the "some" radio button  
  I click row "some" in the "some" table  
  I select "some" from "from list"  
  I fill in the text field "text field name" with "some text"
-
+ I take a screenshot
 
 
 Check results: 
@@ -65,5 +65,4 @@ I sleep for "some"
 
 License:
 
-MIT
-                                            
+MIT                              
