@@ -11,23 +11,29 @@ if ENV['SAFARIWATIR']
 else
   case RUBY_PLATFORM
   when /darwin/
-  #  require 'safariwatir'
-  #  Browser = Watir::Safari
-
-
-    require 'firewatir'
-    Browser = FireWatir::Firefox
-                      
- #require 'watir-webdriver'
- #Browser = Watir::Browser.new :chrome
- 
+    
+    #set browser : firefox / safari / chrome
+    
+    bro = 'firefox'                                        
+                  
+    case bro
+    when /safari/
+      require 'safariwatir'
+      Browser = Watir::Safari.new
+    when /firefox/     
+      require 'firewatir'
+      Browser = FireWatir::Firefox.new
+    when /chrome/
+      require 'watir-webdriver'
+      Browser = Watir::Browser.new :chrome
+   end
  
   when /win32|mingw/
     require 'watir'
-    Browser = Watir::IE
+    Browser = Watir::IE.new
   when /java/
     require 'celerity'
-    Browser = Celerity::Browser
+    Browser = Celerity::Browser.new
   else
     raise "This platform is not supported (#{PLATFORM})"
   end
@@ -37,7 +43,7 @@ end
 #create screenshot folder function
 screenshot_path = create_screenshot_folder
  
- browser = Browser.new
+ browser = Browser
  # "before all"
  Before do    
    @screenshot_path = screenshot_path    

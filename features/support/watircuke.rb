@@ -1,110 +1,114 @@
 module WatirCukeHelpers
-  def find_button(what)
+  def find_button(action, what)
     case
       when @browser.button(:id, what).exists?
-           @browser.button(:id, what).click
+           @browser.button(:id, what).fire_event(action)
        
       when @browser.button(:name, what).exists?
-           @browser.button(:name, what).click
+           @browser.button(:name, what).fire_event(action)
        
       when @browser.button(:value, what).exists?
-           @browser.button(:value, what).click
+           @browser.button(:value, what).fire_event(action)
        
       when @browser.button(:text, what).exists?
-           @browser.button(:text, what).click
+           @browser.button(:text, what).fire_event(action)
        
       when @browser.button(:index, what).exists?
-           @browser.button(:index, what).click
+           @browser.button(:index, what).fire_event(action)
          
       when @browser.button(:class, what).exists?
-           @browser.button(:class, what).click
+           @browser.button(:class, what).fire_event(action)
       else
         fail("Sorry, I wasn't able to find the " + "'#{what}'" + " element ")
     end
   end
 
-  def find_checkbox(what)
+  def find_checkbox(action, what)
     case
       when @browser.checkbox(:id, what).exists?
-           @browser.checkbox(:id, what).click
+           @browser.checkbox(:id, what).fire_event(action)
        
       when @browser.checkbox(:name, what).exists?
-           @browser.checkbox(:name, what).click
+           @browser.checkbox(:name, what).fire_event(action)
        
       when @browser.checkbox(:value, what).exists?
-           @browser.checkbox(:value, what).click
+           @browser.checkbox(:value, what).fire_event(action)
        
       when @browser.checkbox(:text, what).exists?
-           @browser.checkbox(:text, what).click
+           @browser.checkbox(:text, what).fire_event(action)
        
       when @browser.checkbox(:index, what).exists?
-           @browser.checkbox(:index, what).click
+           @browser.checkbox(:index, what).fire_event(action)
       
       when @browser.checkbox(:class, what).exists?
-          @browser.checkbox(:class, what).click
+          @browser.checkbox(:class, what).fire_event(action)
       else
         fail("Sorry, I wasn't able to find the " + "'#{what}'" + " element ")
     end
   end
 
-  def find_image(what)
+  def find_image(action, what)
     case
       when @browser.image(:src, what).exists?
-           @browser.image(:src, what).click
+           @browser.image(:src, what).fire_event(action)
        
       when @browser.image(:id, what).exists?
-           @browser.image(:id, what).click
+           @browser.image(:id, what).fire_event(action)
       
       when @browser.image(:name, what).exists?
-           @browser.image(:name, what).click
+           @browser.image(:name, what).fire_event(action)
       
       when @browser.image(:text, what).exists?
-           @browser.image(:text, what).click
+           @browser.image(:text, what).fire_event(action)
       
       when @browser.image(:index, what).exists?
-           @browser.image(:index, what).click
+           @browser.image(:index, what).fire_event(action)
       
       when @browser.image(:class, what).exists?
-           @browser.image(:class, what).click
+           @browser.image(:class, what).fire_event(action)
       else
         fail("Sorry, I wasn't able to find the " + "'#{what}'" + " element ")
     end
   end
-
-  def find_link(what)
+     
+  def find_link(action, what)
     case
       when @browser.link(:id, what).exists?
-           @browser.link(:id, what).click
+           @browser.link(:id, what).fire_event(action)
            
       when @browser.link(:text, what).exists?
-           @browser.link(:text, what).click
+           @browser.link(:text, what).fire_event(action)
        
       when @browser.link(:class, what).exists?
-           @browser.link(:class, what).click
+           @browser.link(:class, what).fire_event(action)
+      
+      when @browser.link(:title, what).exists?
+           @browser.link(:title, what).fire_event(action)
+      
       else
         fail("Sorry, I wasn't able to find the " + "'#{what}'" + " element ")
     end
   end
 
-  def find_radio_button(what)
+  def find_radio_button(action, what)
     case 
       when @browser.radio(:id, what).exists?
-           @browser.radio(:id, what).click
+           @browser.radio(:id, what).fire_event(action)
        
       when @browser.radio(:name, what).exists?
-           @browser.radio(:name, what).click
+           @browser.radio(:name, what).fire_event(action)
       
       when @browser.radio(:value, what).exists?
-           @browser.radio(:value, what).click
+           @browser.radio(:value, what).fire_event(action)
       
       when @browser.radio(:text, what).exists?
-           @browser.radio(:text, what).click
+           @browser.radio(:text, what).fire_event(action)
       
       when @browser.radio(:index, what).exists?
-           @browser.radio(:index, what).click
+           @browser.radio(:index, what).fire_event(action)
       
       when @browser.radio(:class, what).exists?
-           @browser.radio(:class, what).click
+           @browser.radio(:class, what).fire_event(action)
       else
         fail("Sorry, I wasn't able to find the " + "'#{what}'" + " element ")
     end
@@ -192,11 +196,7 @@ module WatirCukeHelpers
 
              when @browser.span(:class, /(^|\s)#{what}(\s|$)/).exists?
                  @browser.span(:class, /(^|\s)#{what}(\s|$)/) == with
-         
-         
-      # when @browser.span(:class, what).exists?
-      #      @browser.span(:class, what).text == with
-       else     
+        else     
            fail("Sorry, I wasn't able to find the " + "'#{what}'" + " element with " + "'#{with}'")
       end  
   end

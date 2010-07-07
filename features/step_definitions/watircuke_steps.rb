@@ -1,21 +1,21 @@
-Given /I click the "(.*)" button/ do |what|
-  find_button(what)
+Given /I "(.*)" the "(.*)" button/ do |action, what|
+  find_button(action, what)
 end
 
-Given /I click the "(.*)" checkbox/ do |what|
-  find_checkbox(what)
+Given /I "(.*)" the "(.*)" checkbox/ do |action, what|
+  find_checkbox(action, what)
 end
 
-Given /I click the "(.*)" image/ do |what|
-  find_image(what)
+Given /I "(.*)" the "(.*)" image/ do |action, what|
+  find_image(action, what)
 end
 
-Given /I click the "(.*)" link/ do |what|
-  find_link(what)
+Given /I "(.*)" the "(.*)" link/ do |action, what|
+  find_link(action, what)
 end
 
-Given /I click the "(.*)" radio button/ do |what|
-  find_radio_button(what)
+Given /I "(.*)" the "(.*)" radio button/ do |action, what|
+  find_radio_button(action, what)
 end
 
 Given /I click row "(.*)" in the "(.*)" table/ do |row, column, what|
