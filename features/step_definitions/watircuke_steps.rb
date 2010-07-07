@@ -30,6 +30,10 @@ Given /I fill in the text field "(.*)" with "(.*)"/ do |what, with|
   find_text_field(what, with)
 end
 
+Then /I take a screenshot/ do 
+  embed_screenshot("#{@screenshot_path}screenshot-#{Time.new.to_i}")
+end
+
 Then /I should see the span "(.*)" with "(.*)"/ do |what, with|
   find_span(what, with)
 end
@@ -39,7 +43,7 @@ Then /^I should (NOT )?see the sentence "([^\"]*)"$/ do |visibility, what|
 end
 
 Then /^I should (NOT )?see the text "([^\"]*)"$/ do |visibility, what|
-  expected = (visibility.to_s.strip == 'NOT') ? assert_not_equal(@browser.contains_text(what), what) : assert_equal(@browser.contains_text(what))
+  expected = (visibility.to_s.strip == 'NOT') ? assert_not_equal(@browser.contains_text(what), what) : assert_equal(@browser.contains_text(what), what)
 end
 
 Given /I am redirected to "(.*)"/ do |what|

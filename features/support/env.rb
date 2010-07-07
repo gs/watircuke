@@ -1,8 +1,8 @@
 require 'test/unit/assertions'  
 require 'features/support/create_screenshot_folder'
-include Test::Unit::Assertions
-       
+require 'features/support/screenshot'
 
+include Test::Unit::Assertions 
 
 
 if ENV['SAFARIWATIR']
@@ -40,7 +40,7 @@ screenshot_path = create_screenshot_folder
  browser = Browser.new
  # "before all"
  Before do    
-   @screenshot_path = screenshot_path
+   @screenshot_path = screenshot_path    
    @browser = browser
    @environment = "http://"
  end
