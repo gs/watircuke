@@ -21,47 +21,54 @@ gem install safariwatir
 Syntax highlight in html cucumber output:
 gem install syntax 
 
-Textmate syntax recognition and snippets
+Textmate syntax recognition and snippets  for Cucumber
 
 http://github.com/bmabey/cucumber-tmbundle
                                 
 
 
+To have WatirCuke support snippets just unpack the <b>WatirCuke.tmbundle.zip</b> which is in my github in TextMateBundles repo and place it in
+
+<b>~/Library/Application Support/TextMate/Bundles</b>
+
+Then in TextMate -> Bundles -> Bundle Editor -> Reload Bundles
+
+Snippets should work for .feature files.
+
+Below are currently supported sentences: 
+
+Actions:
+
+link[tab]      I "click" the "some" button  
+checkbox[tab]  I "click" the "some" checkbox  
+image[tab] 	   I "click" the "some" image  
+link[tab]      I "click" the "some" link  
+radio[tab]     I "click" the "some" radio button  
+table[tab]	   I click row "some" in the "some" table  
+list[tab]	   I select "some" from "from list"  
+tf[tab]		   I fill in the text field "text field name" with "some text"
+screenshot[tab] I take a screenshot
+
+
+Check results: 
+seespan[tab]  Then I should see the span "some class" with "some text"
+sentence[tab] Then I should (NOT )?see the sentence "some sentence" 
+text[tab]	  Then I should (NOT )?see the text "some text"
+
+Paths redirection:
+red[tab]	I am redirected to "some"  
+on[tab]	 	I am on "page" 
+goto[tab]	I go to "some url"
+sleep[tab]	I sleep for "some"
+
+     
 
 How to run:
 
 cucumber . -f html -o output.html
 
 
-**cukewatir maximizes the Gherkin speak and minimizes the Watir code.    
-                             
-
-Currently supported sentences: 
-
-Actions:
-
- I "click" the "some" button  
- I "click" the "some" checkbox  
- I "click" the "some" image  
- I "click" the "some" link  
- I "click" the "some" radio button  
- I click row "some" in the "some" table  
- I select "some" from "from list"  
- I fill in the text field "text field name" with "some text"
- I take a screenshot
-
-
-Check results: 
-Then I should see the span "some class" with "some text"
-Then I should (NOT )?see the sentence "some sentance" 
-Then I should (NOT )?see the text "some text"
-
-Paths redirection:
-I am redirected to "some"  
-I am on "page" 
-I go to "some url"
-I sleep for "some"
-
+**cukewatir maximizes the Gherkin speak and minimizes the Watir code.          
 
 License:
 
