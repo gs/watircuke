@@ -1,9 +1,10 @@
+require 'rubygems'
+require 'ruby-debug'
 require 'test/unit/assertions'  
 require 'features/support/create_screenshot_folder'
 require 'features/support/screenshot'
 
 include Test::Unit::Assertions 
-
 
 if ENV['SAFARIWATIR']
   require 'safariwatir'
@@ -46,7 +47,7 @@ screenshot_path = create_screenshot_folder
  browser = Browser
  # "before all"
  Before do    
-   @screenshot_path = screenshot_path    
+   @screenshot_path = screenshot_path
    @browser = browser
    @environment = "http://"
  end
