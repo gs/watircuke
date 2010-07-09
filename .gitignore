@@ -1,6 +1,6 @@
 features/*.feature
-support/paths.rb
 features/screenshots/*
+features/support/paths.rb
 dictionary
 .DS_Store
 .features-3XzR
