@@ -1,8 +1,10 @@
 require 'rubygems'
-require 'ruby-debug'
+require 'ruby-debug'    
 require 'test/unit/assertions'  
 require 'features/support/create_screenshot_folder'
 require 'features/support/screenshot'
+require 'cucumber/formatter/unicode'
+
 
 include Test::Unit::Assertions 
 
@@ -43,10 +45,18 @@ end
                         
 #create screenshot folder function
 screenshot_path = create_screenshot_folder
- 
+
+@fixtures = %w/ login_de /
+ @fixtures.each do |table|
+   $table = YAML.load_file("features/fixtures/#{table}.yml")
+   #table.classify.constantize#.delete_all
+ end
+  
  browser = Browser
  # "before all"
- Before do    
+ Before do  
+   #define which fixture should be loaded         
+   
    @screenshot_path = screenshot_path
    @browser = browser
    @environment = "http://"

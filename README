@@ -63,6 +63,16 @@ goto[tab]	I go to "some url"
 sleep[tab]	I sleep for "some"
 
      
+Fixtures files can be dropped into : 'features/fixtures' path.
+After adding new file drop its name into env.rb file in 51st line(without extension).
+
+To input its value to gherkin all you have to do is:
+ 
+I "click" the ":data_example.name" link   
+
+its important to have ':' in front of table.column notation
+
+
 
 How to run:
 

@@ -1,30 +1,27 @@
 module WatirCukeHelpers
   def find_button(action, what)         
-
-    case
-      when @browser.button(:id, what).exists?
-           then @browser.button(:id, what).fire_event(action)
-       
-      when @browser.button(:name, what).exists?
-           then @browser.button(:name, what).fire_event(action)
-       
-      when @browser.button(:value, what).exists?
-           then @browser.button(:value, what).fire_event(action) 
+      case
+            when @browser.button(:id, what).exists?
+                 then @browser.button(:id, what).fire_event(action)
+             
+            when @browser.button(:name, what).exists?
+                 then @browser.button(:name, what).fire_event(action)
       
-      when @browser.button(:text, what).exists?
-           then @browser.button(:text, what).fire_event(action)
-       
-      when @browser.button(:index, what).exists?
-           then @browser.button(:index, what).fire_event(action)
-         
-      when @browser.button(:class, what).exists?
-           then @browser.button(:class, what).fire_event(action)
-           
-          
-      when @browser.button(:text, /#{what}/).exists?
-           then @browser.button(:text, /#{what}/).fire_event(action) 
-           
-
+            when @browser.button(:value, what).exists?
+                 then @browser.button(:value, what).fire_event(action) 
+            
+            when @browser.button(:text, what).exists?
+                 then @browser.button(:text, what).fire_event(action)
+             
+            when @browser.button(:index, what).exists?
+                 then @browser.button(:index, what).fire_event(action)
+               
+            when @browser.button(:class, what).exists?
+                 then @browser.button(:class, what).fire_event(action)
+                 
+                
+            when @browser.button(:text, /#{what}/).exists?
+                 then @browser.button(:text, /#{what}/).fire_event(action)               
       else 
         fail("Sorry, I wasn't able to find the " + "'#{what}'" + " element ")
     end
@@ -211,7 +208,12 @@ module WatirCukeHelpers
       end  
   end
   
-  
+  def parse_from_yaml(with)    
+    w = with.gsub(":","").split(".")
+   # t = w[0]
+   # v = w[1]   
+    return $table[w[0]][w[1]]
+  end
   
 end
 
