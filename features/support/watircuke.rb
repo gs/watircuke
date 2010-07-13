@@ -68,6 +68,9 @@ module WatirCukeHelpers
       when @browser.image(:index, what).exists?
            then @browser.image(:index, what).fire_event(action)
       
+      when @browser.image(:alt, what).exists?
+           then @browser.image(:alt, what).fire_event(action)
+      
       when @browser.image(:class, what).exists?
            then @browser.image(:class, what).fire_event(action)
       else
@@ -188,7 +191,6 @@ module WatirCukeHelpers
   
   def find_span(what,with)
        case
-         
              when @browser.span(:id, what).exists?
                   then @browser.span(:id, what) == with     
 
@@ -207,11 +209,33 @@ module WatirCukeHelpers
            fail("Sorry, I wasn't able to find the " + "'#{what}'" + " element with " + "'#{with}'")
       end  
   end
+       
+  def find_div(action, what)
+     case
+       when @browser.div(:id, what).exists?
+            then @browser.div(:id, what).fire_event(action)
+
+       when @browser.div(:name, what).exists?
+            then @browser.div(:name, what).fire_event(action)
+
+       when @browser.div(:value, what).exists?
+            then @browser.div(:value, what).fire_event(action)
+
+       when @browser.div(:text, what).exists?
+            then @browser.div(:text, what).fire_event(action)
+
+       when @browser.div(:index, what).exists?
+            then @browser.div(:index, what).fire_event(action)
+
+       when @browser.div(:class, what).exists?
+            then @browser.div(:class, what).fire_event(action)
+       else
+         fail("Sorry, I wasn't able to find the " + "'#{what}'" + " element ")
+     end
+   end  
   
   def parse_from_yaml(with)    
     w = with.gsub(":","").split(".")
-   # t = w[0]
-   # v = w[1]   
     return $table[w[0]][w[1]]
   end
   

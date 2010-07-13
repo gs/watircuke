@@ -8,6 +8,11 @@ Given /I "(.*)" the "(.*)" checkbox/ do |action, what|
   find_checkbox(action, what)
 end
 
+Given /I "(.*)" the "(.*)" div/ do |action, what|
+  what = parse_from_yaml(what) if what.match(":")
+  find_div(action, what)
+end
+
 Given /I "(.*)" the "(.*)" image/ do |action, what|
   find_image(action, what)
 end

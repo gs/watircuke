@@ -47,6 +47,7 @@ radio[tab]     I "click" the "some" radio button
 table[tab]	   I click row "some" in the "some" table  
 list[tab]	   I select "some" from "from list"  
 tf[tab]		   I fill in the text field "text field name" with "some text"
+div[tab]       I "click" the "some" div
 screenshot[tab] I take a screenshot
 debug[tab]	   I debug
 
