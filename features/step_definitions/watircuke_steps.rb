@@ -45,7 +45,7 @@ end
 Then /I should see the "(.*)" image/ do |image|
     assert(@browser.image(:src, /image/).height.to_i == 0) ? false : true 
    #assert((ff.image(:src, /nachbar3_medium.JPG/).height.to_i == 0 ), true)
-   
+
 end 
 
 Then /I take a screenshot/ do 
@@ -87,3 +87,4 @@ end
 Given /^I sleep for "([^\"]*)"$/ do |seconds|
   sleep seconds.to_i
 end
+

@@ -1,12 +1,15 @@
 require 'rubygems'
 require 'ruby-debug'    
-require 'test/unit/assertions'  
+require 'test/unit/assertions'         
+require 'action_controller'
+require 'action_controller/assertions/selector_assertions'
 require 'features/support/create_screenshot_folder'
 require 'features/support/screenshot'
 require 'cucumber/formatter/unicode'
 
 
 include Test::Unit::Assertions 
+include ActionController::Assertions::SelectorAssertions
 
 if ENV['SAFARIWATIR']
   require 'safariwatir'
@@ -15,7 +18,7 @@ else
   case RUBY_PLATFORM
   when /darwin/
     
-    #set browser : firefox / safari / chrome
+    #set browser : firefox / safari / chrome / celerity
     
     bro = 'firefox'                                        
                   
@@ -46,21 +49,30 @@ end
 #create screenshot folder function
 screenshot_path = create_screenshot_folder
 
-@fixtures = %w/ login_de /
- @fixtures.each do |table|
-   $table = YAML.load_file("features/fixtures/#{table}.yml")
-   #table.classify.constantize#.delete_all
- end
+#$table = {}
+
+#define which fixture should be loaded         
+                   
   
  browser = Browser
  # "before all"
- Before do  
-   #define which fixture should be loaded         
+ Before do    
+   @table = {}
    
    @screenshot_path = screenshot_path
+   
+   @fixtures = %w/create_event_de login_de/
+   @fixtures.each { |table| @table.merge! YAML.load_file("features/fixtures/#{table}.yml") } 
+   
    @browser = browser
    @environment = "http://"
  end
+         
+# after each step which is called '@new_feature' make a screenshot
+
+AfterStep('@new_feature') do    
+  embed_screenshot("#{@screenshot_path}screenshot-#{Time.new.to_i}") 
+end
  
  # "after all"
  After do           
