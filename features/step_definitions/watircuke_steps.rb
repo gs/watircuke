@@ -1,5 +1,6 @@
 Given /I "(.*)" the "(.*)" button/ do |action, what|
-  what = parse_from_yaml(what) if what.match(":")     
+  what = parse_from_yaml(what) if what.match(":")         
+  click_alert_button_ok
   find_button(action, what) 
 end
 
@@ -19,6 +20,7 @@ end
 
 Given /I "(.*)" the "(.*)" link/ do |action, what| 
   what = parse_from_yaml(what) if what.match(":")
+  click_alert_button_ok
   find_link(action, what)
 end
 
@@ -40,6 +42,11 @@ end
 Given /I fill in the text field "(.*)" with "(.*)"/ do |what, with|    
   with = parse_from_yaml(with) if with.match(":")
   find_text_field(what, with)
+end
+
+
+Then /I refresh the page/ do
+  @browser.refresh
 end
 
 Then /I should see the "(.*)" image/ do |image|

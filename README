@@ -50,6 +50,7 @@ tf[tab]		   I fill in the text field "text field name" with "some text"
 div[tab]       I "click/onmouseover" the "some" div
 screenshot[tab] I take a screenshot
 debug[tab]	   I debug
+refresh[tab]   I refresh the page
 
 Check results:        
 check_image[tab] Then I should see the "some image" image

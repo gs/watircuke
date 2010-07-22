@@ -95,6 +95,11 @@ module WatirCukeHelpers
       when @browser.link(:text, /#{what}/).exists?
            then @browser.link(:text, /#{what}/).fire_event(action)
       
+      when @browser.link(:id, /#{what}/).exists?
+           then @browser.link(:id, /#{what}/).fire_event(action)
+      
+      when @browser.link(:href, /#{what}/).exists?
+          then  @browser.link(:href, /#{what}/).fire_event(action)
       else
         fail("Sorry, I wasn't able to find the " + "'#{what}'" + " element ")
     end
@@ -233,6 +238,15 @@ module WatirCukeHelpers
          fail("Sorry, I wasn't able to find the " + "'#{what}'" + " element ")
      end
    end  
+  
+  def click_alert_button_ok
+    begin
+      @browser.startClicker('OK', 3)
+    rescue Exception => ex
+      fail("Sorry could not found the javascript alert")
+    end
+  end                     
+  
   
   def parse_from_yaml(with)    
     w = with.gsub(":","").split(".")
