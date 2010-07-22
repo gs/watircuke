@@ -12,4 +12,4 @@ gems:
 - name: rb-appscript
 - name: safariwatir
 - name: syntax
-- name: colorize
+- name: colorize                                                       
