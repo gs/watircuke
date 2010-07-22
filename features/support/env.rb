@@ -1,4 +1,5 @@
 require 'rubygems'
+require 'colorize'
 require 'ruby-debug'    
 require 'test/unit/assertions'         
 require 'action_controller'
@@ -61,7 +62,7 @@ screenshot_path = create_screenshot_folder
    
    @screenshot_path = screenshot_path
    
-   @fixtures = %w/create_event_de login_de/
+   @fixtures = %w/sanity_check_de/
    @fixtures.each { |table| @table.merge! YAML.load_file("features/fixtures/#{table}.yml") } 
    
    @browser = browser

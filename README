@@ -2,29 +2,23 @@ INSTALL
          
 First be sure to have installed Ruby(1.8.7) and RubyGems
        
-Cucumber:
-gem install cucumber
+Then install:
 
-Watir:
-gem install Watir
+gem install geminstaller
 
-FireWatir:
-gem install firewatir
+and 
 
-JSSH for FireWatir:
+geminstaller config/geminstaller.yml
+
+This will install all necessary gems.
+
+Then install JSSH for FireWatir:
 http://wiki.openqa.org/display/WTR/FireWatir+Installation
                                                          
-SafariWatir + AppScript:
-gem install rb-appscript
-gem install safariwatir
-                        
-Syntax highlight in html cucumber output:
-gem install syntax 
-
-Textmate syntax recognition and snippets  for Cucumber
+For MacOSX I recommend to install:
+Textmate syntax recognition and snippets for Cucumber
 
 http://github.com/bmabey/cucumber-tmbundle
-                                
 
 
 To have WatirCuke support snippets just unpack the WatirCuke.tmbundle.zip which is in my github in TextMateBundles repo and place it in

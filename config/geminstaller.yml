@@ -1,0 +1,15 @@
+--- 
+#
+# This is a GemInstaller config file (http://geminstaller.rubyforge.org)
+#
+# This is a list of all gems we need on production
+#
+defaults:
+  install_options: --include-dependencies
+gems: 
+- name: cucumber
+- name: firewatir
+- name: rb-appscript
+- name: safariwatir
+- name: syntax
+- name: colorize
