@@ -6,7 +6,7 @@ Then install:
 
 gem install geminstaller
 
-Then goto the checkout repository and type:
+Then checkout the WatirCuke git repo (if not yet done ;) ) and type
 
 geminstaller config/geminstaller.yml
 
