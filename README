@@ -42,7 +42,7 @@ table[tab]	   I click row "some" in the "some" table
 list[tab]	   I select "some" from "from list"  
 tf[tab]		   I fill in the text field "text field name" with "some text"
 div[tab]       I "click/onmouseover" the "some" div
-screenshot[tab] I take a screenshot
+*screenshot[tab] I take a screenshot    
 debug[tab]	   I debug
 refresh[tab]   I refresh the page
 
@@ -74,6 +74,9 @@ tag @new_feature - putted above the scenario will force watircuke to make a scre
 How to run:
 
 cucumber . -f html -o output.html
+ 
+
+*screenshot - will be dropped in test_results/test_datetime/screenshots/ - this structure is created each time cucumber is being run
 
 
 **cukewatir maximizes the Gherkin speak and minimizes the Watir code.          

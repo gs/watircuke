@@ -1,5 +1,6 @@
 require 'rubygems'
-require 'colorize'
+require 'colorize'    
+require 'fileutils'
 require 'ruby-debug'    
 require 'test/unit/assertions'         
 require 'action_controller'
