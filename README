@@ -6,7 +6,7 @@ Then install:
 
 gem install geminstaller
 
-and 
+Then goto the checkout repository and type:
 
 geminstaller config/geminstaller.yml
 
