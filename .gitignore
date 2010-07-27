@@ -1,10 +1,9 @@
 features/*.feature
-features/screenshots/*
+features/fixtures/*
 features/support/paths.rb
 dictionary
 .DS_Store
 .features-3XzR
 *.sh
 *.html
-test
-test_regression
+test_results/*

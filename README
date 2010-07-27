@@ -41,6 +41,8 @@ radio[tab]     I "click/onmouseover" the "some" radio button
 table[tab]	   I click row "some" in the "some" table  
 list[tab]	   I select "some" from "from list"  
 tf[tab]		   I fill in the text field "text field name" with "some text"
+df[tab] 	   I fill in the date field "date field name" with "fraze (from http://chronic.rubyforge.org/ are supported)"
+ff[tab]		   I fill in the file field "file field name" with "file path"
 div[tab]       I "click/onmouseover" the "some" div
 *screenshot[tab] I take a screenshot    
 debug[tab]	   I debug
@@ -66,7 +68,7 @@ To input its value to gherkin all you have to do is:
  
 I "click/onmouseover" the ":data_example.name" link   
 
-its important to have ':' in front of table.column notation
+its important to have ':' in front of :table.column notation
 
 
 tag @new_feature - putted above the scenario will force watircuke to make a screenshot after each action.

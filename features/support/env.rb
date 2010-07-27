@@ -2,6 +2,7 @@ require 'rubygems'
 require 'colorize'    
 require 'fileutils'
 require 'ruby-debug'    
+require 'chronic'
 require 'test/unit/assertions'         
 require 'action_controller'
 require 'action_controller/assertions/selector_assertions'
@@ -29,8 +30,11 @@ else
       require 'safariwatir'
       Browser = Watir::Safari.new
     when /firefox/     
-      require 'firewatir'
-      Browser = FireWatir::Firefox.new
+     require 'firewatir'
+     Browser = FireWatir::Firefox.new
+     # require 'vapir'
+     # require 'vapir-firefox'
+     #  Browser = Vapir::Firefox.new
     when /chrome/
       require 'watir-webdriver'
       Browser = Watir::Browser.new :chrome
