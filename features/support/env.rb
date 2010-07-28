@@ -21,7 +21,7 @@ else
   case RUBY_PLATFORM
   when /darwin/
     
-    #set browser : firefox / safari / chrome / celerity
+    #set browser : ie/firefox / safari / chrome / celerity
     
     bro = 'firefox'                                        
                   
@@ -37,12 +37,13 @@ else
      #  Browser = Vapir::Firefox.new
     when /chrome/
       require 'watir-webdriver'
-      Browser = Watir::Browser.new :chrome
+      Browser = Watir::Browser.new :chrome 
+     when /ie/
+       require 'watir'
+       Browser = Watir::IE.new
    end
  
-  when /win32|mingw/
-    require 'watir'
-    Browser = Watir::IE.new
+
   when /java/
     require 'celerity'
     Browser = Celerity::Browser.new
