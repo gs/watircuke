@@ -18,9 +18,6 @@ if ENV['SAFARIWATIR']
   require 'safariwatir'
   Browser = Watir::Safari
 else
-  case RUBY_PLATFORM
-  when /darwin/
-    
     #set browser : ie/firefox / safari / chrome / celerity
     
     bro = 'firefox'                                        
@@ -38,13 +35,12 @@ else
     when /chrome/
       require 'watir-webdriver'
       Browser = Watir::Browser.new :chrome 
-     when /ie/
-       require 'watir'
+     
+   when /ie/
+       require 'watir' 
+       
        Browser = Watir::IE.new
-   end
- 
-
-  when /java/
+   when /celerity/
     require 'celerity'
     Browser = Celerity::Browser.new
   else
