@@ -261,11 +261,7 @@ module WatirCukeHelpers
 	 end	
 	
 	def click_alert_button_ok
-     begin
-       @browser.startClicker('OK', 3)
-     rescue Exception => ex
-       fail("Sorry could not found the javascript alert")
-     end
+       @browser.startClicker("OK", 3)
 	end											
 	
 	def create_output

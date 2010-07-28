@@ -67,7 +67,7 @@ screenshot_path = create_screenshot_folder
    
    @screenshot_path = screenshot_path
    
-   @fixtures = %w/sanity_check_de/
+   @fixtures = %w/login_de first_user_journey_de/
    @fixtures.each { |table| @table.merge! YAML.load_file("features/fixtures/#{table}.yml") } 
    
    @browser = browser
