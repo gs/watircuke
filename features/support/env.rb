@@ -36,6 +36,7 @@ case bro
  when "ie"
     require 'watir' 
     require 'watir/ie'
+    require 'win32ole'
     Browser = Watir::IE.new
 
  when "celerity"
