@@ -14,38 +14,35 @@ require 'cucumber/formatter/unicode'
 include Test::Unit::Assertions 
 include ActionController::Assertions::SelectorAssertions
 
-if ENV['SAFARIWATIR']
-  require 'safariwatir'
-  Browser = Watir::Safari
-else
-    #set browser : ie/firefox / safari / chrome / celerity
+#set browser : ie / firefox / safari / chrome / celerity
     
-    bro = 'firefox'                                        
+bro = "firefox"                                        
                   
-    case bro
-    when /safari/
-      require 'safariwatir'
-      Browser = Watir::Safari.new
-    when /firefox/     
-     require 'firewatir'
-     Browser = FireWatir::Firefox.new
+case bro
+  when "safari"
+    require 'safariwatir'
+    Browser = Watir::Safari.new
+ 
+  when "firefox"
+   require 'firewatir'
+   Browser = FireWatir::Firefox.new
      # require 'vapir'
      # require 'vapir-firefox'
      #  Browser = Vapir::Firefox.new
-    when /chrome/
-      require 'watir-webdriver'
-      Browser = Watir::Browser.new :chrome 
+  when "chrome"
+    require 'watir-webdriver'
+    Browser = Watir::Browser.new :chrome 
      
-   when /ie/
-       require 'watir' 
-       
-       Browser = Watir::IE.new
-   when /celerity/
-    require 'celerity'
-    Browser = Celerity::Browser.new
-  else
+ when "ie"
+    require 'watir' 
+    require 'watir/ie'
+    Browser = Watir::IE.new
+
+ when "celerity"
+   require 'celerity'
+   Browser = Celerity::Browser.new
+else
     raise "This platform is not supported (#{PLATFORM})"
-  end
 end
                                       
                         
@@ -64,7 +61,7 @@ screenshot_path = create_screenshot_folder
    
    @screenshot_path = screenshot_path
    
-   @fixtures = %w/login_de first_user_journey_de/
+   @fixtures = %w/sanity_check_de/
    @fixtures.each { |table| @table.merge! YAML.load_file("features/fixtures/#{table}.yml") } 
    
    @browser = browser

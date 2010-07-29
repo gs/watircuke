@@ -33,17 +33,17 @@ Below are currently supported sentences:
 
 Actions:
 
-link[tab]      I "click/onmouseover" the "some" button  
-checkbox[tab]  I "click/onmouseover" the "some" checkbox  
-image[tab] 	   I "click/onmouseover" the "some" image  
-link[tab]      I "click/onmouseover" the "some" link  
-radio[tab]     I "click/onmouseover" the "some" radio button  
+link[tab]      I click the "some" button  
+checkbox[tab]  I click the "some" checkbox  
+image[tab] 	   I click the "some" image  
+link[tab]      I click/onmouseover the "some" link (with alert)  
+radio[tab]     I click the "some" radio button  
 table[tab]	   I click row "some" in the "some" table  
 list[tab]	   I select "some" from "from list"  
 tf[tab]		   I fill in the text field "text field name" with "some text"
 df[tab] 	   I fill in the date field "date field name" with "fraze (from http://chronic.rubyforge.org/ are supported)"
 ff[tab]		   I fill in the file field "file field name" with "file path"
-div[tab]       I "click/onmouseover" the "some" div
+div[tab]       I click the "some" div
 *screenshot[tab] I take a screenshot    
 debug[tab]	   I debug
 refresh[tab]   I refresh the page
@@ -53,6 +53,7 @@ check_image[tab] Then I should see the "some image" image
 check_span[tab]  Then I should see the span "some class" with "some text"
 check_sentence[tab] Then I should (NOT )?see the sentence "some sentence" 
 check_text[tab]	  Then I should (NOT )?see the text "some text"
+check_all[tab]   Then I check all objects (this will dump all page objects to file)
 
 Paths redirection:
 red[tab]	I am redirected to "some"  
@@ -66,7 +67,7 @@ After adding new file drop its name into env.rb file in 51st line(without extens
 
 To input its value to gherkin all you have to do is:
  
-I "click/onmouseover" the ":data_example.name" link   
+I click the ":data_example.name" link   
 
 its important to have ':' in front of :table.column notation
 
