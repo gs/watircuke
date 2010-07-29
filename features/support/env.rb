@@ -38,6 +38,7 @@ case bro
     require 'watir/ie'
     require 'win32ole'
     Browser = Watir::IE.new
+    Browser.speed = :zippy #browser speed :fast / :zippy
 
  when "celerity"
    require 'celerity'
