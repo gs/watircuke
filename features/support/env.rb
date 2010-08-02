@@ -3,20 +3,18 @@ require 'colorize'
 require 'fileutils'
 require 'ruby-debug'    
 require 'chronic'
+require 'spec'
 require 'test/unit/assertions'         
-require 'action_controller'
-require 'action_controller/assertions/selector_assertions'
 require 'features/support/create_screenshot_folder'
 require 'features/support/screenshot'
 require 'cucumber/formatter/unicode'
 
 
 include Test::Unit::Assertions 
-include ActionController::Assertions::SelectorAssertions
 
 #set browser : ie / firefox / safari / chrome / celerity
     
-bro = "firefox"                                        
+bro = "firefox"
                   
 case bro
   when "safari"
@@ -24,11 +22,16 @@ case bro
     Browser = Watir::Safari.new
  
   when "firefox"
-   require 'firewatir'
-   Browser = FireWatir::Firefox.new
+
+  #  require 'firewatir'
+   # Browser = FireWatir::Firefox.new  
+
+   require 'watir-webdriver'
+   Browser = Watir::Browser.new :firefox
      # require 'vapir'
      # require 'vapir-firefox'
      #  Browser = Vapir::Firefox.new
+  
   when "chrome"
     require 'watir-webdriver'
     Browser = Watir::Browser.new :chrome 
@@ -63,7 +66,7 @@ screenshot_path = create_screenshot_folder
    
    @screenshot_path = screenshot_path
    
-   @fixtures = %w/sanity_check_de/
+   @fixtures = %w/first_user_journey_de login_de/
    @fixtures.each { |table| @table.merge! YAML.load_file("features/fixtures/#{table}.yml") } 
    
    @browser = browser

@@ -1,4 +1,5 @@
-#!/bin/bash               
+#!/bin/bash                  
+#designed to work with bash 3.2
 #this script moves the file into newest created folder in test_results/test_..
 
 #run

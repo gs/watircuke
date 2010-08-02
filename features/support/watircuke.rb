@@ -10,15 +10,14 @@ module WatirCukeHelpers
 						when @browser.button(:value, what).exists?
 								 then @browser.button(:value, what).click 
 						
-						when @browser.button(:text, what).exists?
-								 then @browser.button(:text, what).click
-						 
-						when @browser.button(:index, what).exists?
-								 then @browser.button(:index, what).click
-							 
 						when @browser.button(:class, what).exists?
 								 then @browser.button(:class, what).click
-								 
+  
+   					when @browser.button(:index, what).exists?
+ 								 then @browser.button(:index, what).click
+
+  		     	when @browser.button(:text, what).exists?
+  							 then @browser.button(:text, what).click			 
 								
 			#			 when @browser.button(:text, /#{what}/).exists?
 			#						then @browser.button(:text, /#{what}/).click								
@@ -89,9 +88,6 @@ module WatirCukeHelpers
 			when @browser.link(:class, what).exists?
 					 then @browser.link(:class, what).click
 			
-			when @browser.link(:title, what).exists?
-					 then @browser.link(:title, what).click
-			
 			when @browser.link(:text, /#{what}/).exists?
 					 then @browser.link(:text, /#{what}/).click
 			
@@ -100,6 +96,9 @@ module WatirCukeHelpers
 			
 			when @browser.link(:href, /#{what}/).exists?
 					then	@browser.link(:href, /#{what}/).click
+
+		 when @browser.link(:title, what).exists?
+  				 then @browser.link(:title, what).click
 			else
 				fail("Sorry, I wasn't able to find the " + "'#{what}'" + " element ")
 		end
@@ -264,8 +263,13 @@ module WatirCukeHelpers
 	    if @browser.class.to_s == "Watir::IE"    
          Process.kill(9,$pid)  if $pid
          $pid = Process.create(:app_name => 'ruby ../lib/popup_killer_ie.rb', :creation_flags => Process::DETACHED_PROCESS).process_id   
+     elsif @browser.class.to_s == "FireWatir::Firefox"
+       @browser.startClicker("OK", 3)  
+     elsif @browser.class.to_s == "Watir::Safari"
+       fail("JS clicking not availalble for Safari Watir currently...")
      else
-       @browser.startClicker("OK", 3)
+        @browser.execute_script("window.alert = function(msg) { return true; }")         
+        @browser.execute_script("window.confirm = function(msg) { return true; }")
      end
 	end											
 	

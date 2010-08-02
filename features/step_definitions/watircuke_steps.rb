@@ -86,8 +86,13 @@ Then /I should see the span "(.*)" with "(.*)"/ do |what, with|
 end
 
 Then /^I should (NOT )?see the text "(.*)"$/ do |visibility, what|
-  what = parse_from_yaml(what) if fixture?(what) 
-  expected = (visibility.to_s.strip == 'NOT') ? assert_false(@browser.contains_text(what)) : assert(@browser.contains_text(what))
+  what = parse_from_yaml(what) if fixture?(what)           
+  if @browser.class.to_s=="Watir::IE" 
+   expected = (visibility.to_s.strip == 'NOT') ? assert_false(@browser.contains_text(what)) : assert(@browser.contains_text(what))     
+ else
+   expected = (visibility.to_s.strip == 'NOT') ? @browser.text.index(what).should == nil  : @browser.text.index(what).should >= 0
+ end
+
 end
 
 Then /^I should (NOT )?see the sentence "([^\"]*)"$/ do |visibility, what|  

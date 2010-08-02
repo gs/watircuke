@@ -17,5 +17,4 @@ gems:
 - name: chronic                                                       
 - name: win32console
 - name: ruby-debug
-- name: rails
 - name: watir-webdriver
