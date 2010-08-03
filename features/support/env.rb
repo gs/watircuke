@@ -40,7 +40,7 @@ case bro
     require 'watir' 
     require 'watir/ie'
     require 'win32ole'    
-    require 'win32process'
+    require 'win32/process'
     Browser = Watir::IE.new
     Browser.speed = :zippy #browser speed :fast / :zippy
 
