@@ -18,3 +18,4 @@ gems:
 - name: win32console
 - name: ruby-debug
 - name: watir-webdriver
+- name: rspec
