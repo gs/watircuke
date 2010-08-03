@@ -29,8 +29,8 @@ module Screenshots
 end
 World(Screenshots)
 
-After do  |scenario|        
-  embed_screenshot("#{@screenshot_path}screenshot-#{Time.new.to_i}")  if scenario.failed?
+After do  |scenario|
+    embed_screenshot("#{@screenshot_path}screenshot-#{Time.new.to_i}")  if scenario.failed?
 end
 
 # Other variants:
