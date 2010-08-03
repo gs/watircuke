@@ -262,7 +262,7 @@ module WatirCukeHelpers
 	def click_alert_button_ok     
 	    if @browser.class.to_s == "Watir::IE"    
          Process.kill(9,$pid)  if $pid
-         $pid = Process.create(:app_name => 'ruby ../lib/popup_killer_ie.rb', :creation_flags => Process::DETACHED_PROCESS).process_id   
+         $pid = Process.create(:app_name => "ruby #{Dir.pwd}/lib/popup_killer_ie.rb", :creation_flags => Process::DETACHED_PROCESS).process_id   
      elsif @browser.class.to_s == "FireWatir::Firefox"
        @browser.startClicker("OK", 3)  
      elsif @browser.class.to_s == "Watir::Safari"

@@ -23,11 +23,11 @@ case bro
  
   when "firefox"
 
-  #  require 'firewatir'
-   # Browser = FireWatir::Firefox.new  
+    require 'firewatir'
+    Browser = FireWatir::Firefox.new  
 
-   require 'watir-webdriver'
-   Browser = Watir::Browser.new :firefox
+   #require 'watir-webdriver'
+   #Browser = Watir::Browser.new :firefox
      # require 'vapir'
      # require 'vapir-firefox'
      #  Browser = Vapir::Firefox.new
@@ -39,7 +39,8 @@ case bro
  when "ie"
     require 'watir' 
     require 'watir/ie'
-    require 'win32ole'
+    require 'win32ole'    
+    require 'win32process'
     Browser = Watir::IE.new
     Browser.speed = :zippy #browser speed :fast / :zippy
 
@@ -66,7 +67,7 @@ screenshot_path = create_screenshot_folder
    
    @screenshot_path = screenshot_path
    
-   @fixtures = %w/first_user_journey_de login_de/
+   @fixtures = %w/sanity_check_de/
    @fixtures.each { |table| @table.merge! YAML.load_file("features/fixtures/#{table}.yml") } 
    
    @browser = browser
