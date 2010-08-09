@@ -217,19 +217,19 @@ module WatirCukeHelpers
 	def find_span(what,with)
 			 case
 						 when @browser.span(:id, what).exists?
-									then @browser.span(:id, what) == with			
+									then @browser.span(:id, what).text == with			
 
 						 when @browser.span(:name, what).exists?
-									then @browser.span(:name, what) == with
+									then @browser.span(:name, what).text == with
 
 						 when @browser.span(:value, what).exists?
-									then @browser.span(:value, what) == with
+									then @browser.span(:value, what).text == with
 
 						 when @browser.span(:index, what).exists?
-									then @browser.span(:index, what) == with
+									then @browser.span(:index, what).text == with
 
 						 when @browser.span(:class, /(^|\s)#{what}(\s|$)/).exists?
-									then @browser.span(:class, /(^|\s)#{what}(\s|$)/) == with
+									then @browser.span(:class, /(^|\s)#{what}(\s|$)/).text == with
 				else		 
 					 fail("Sorry, I wasn't able to find the " + "'#{what}'" + " element with " + "'#{with}'")
 			end	 
@@ -287,7 +287,7 @@ module WatirCukeHelpers
 	end
 
  #validate if this is a fixture
-	def fixture?(value)
+	def fixture?(value)      
 	    value =~ /^\:\w*\./
 	end                  
 	
