@@ -77,7 +77,7 @@ Then /^I should (NOT )?see the text "(.*)"$/ do |visibility, what|
   if @browser.class.to_s=="Watir::IE" 
    expected = (visibility.to_s.strip == 'NOT') ? assert_false(@browser.contains_text(what)) : assert(@browser.contains_text(what))     
  else
-   expected = (visibility.to_s.strip == 'NOT') ? @browser.text.index(what).should == nil  : @browser.text.index(what).should >= 0
+   expected = (visibility.to_s.strip == 'NOT') ? @browser.text.index(what).should == nil  : @browser.text.index(what).should_not == nil
  end
 
 end
