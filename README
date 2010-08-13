@@ -40,8 +40,7 @@ link[tab]      I click/onmouseover the "some" link (with alert)
 radio[tab]     I click the "some" radio button  
 table[tab]	   I click row "some" in the "some" table  
 list[tab]	   I select "some" from "from list"  
-tf[tab]		   I fill in the text field "text field name" with "some text"
-df[tab] 	   I fill in the date field "date field name" with "fraze (from http://chronic.rubyforge.org/ are supported)"
+tf[tab]		   I fill in the text field "text field name" with "some text / fraze (from http://chronic.rubyforge.org/ are supported)"
 ff[tab]		   I fill in the file field "file field name" with "file path"
 div[tab]       I click the "some" div
 *screenshot[tab] I take a screenshot    
@@ -62,8 +61,8 @@ goto[tab]	I go to "some url"
 sleep[tab]	I sleep for "some"
 
      
-Fixtures files can be dropped into : 'features/fixtures' path.
-After adding new file drop its name into env.rb file in 51st line(without extension).
+Fixtures/Language files can be dropped into : 'features/fixtures' path.
+After adding new file drop its name into env.rb file(17th line) to LANGUAGE constant variable.
 
 To input its value to gherkin all you have to do is:
  
