@@ -42,14 +42,10 @@ Given /I select "(.*)" from "(.*)"/ do |with, what|
   find_select_list(with, what)
 end
 
-Given /I fill in the text field "(.*)" with "(.*)"/ do |tf_name, what|    
-   find_text_field(tf_name, what)
+Given /I fill in the text field "(.*)" with "(.*)"/ do |tf_name, what| 
+    what = calculate_date(what) if calculate_date(what)
+    find_text_field(tf_name, what)
 end
-
-Given /I fill in the date field "(.*)" with "(.*)"/ do |df_name, what|    
-  find_text_field(df_name, calculate_date(what))
-end
-
 
 Given /I fill in the file field "(.*)" with "(.*)"/ do |ff_name, what|    
   find_file_field(ff_name, what)

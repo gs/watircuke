@@ -292,12 +292,7 @@ module WatirCukeHelpers
 	end                  
 	
 	def calculate_date(datevalue)    
-	  begin
-     return @formatdate = Chronic.parse(datevalue).strftime("%d-%m-%Y")
-   rescue Exception => ex
-     puts "#{ex}".red
-   end
-	 
+     return Chronic.parse(datevalue).strftime("%d-%m-%Y") unless Chronic.parse(datevalue).nil?
 	end
 	
 end

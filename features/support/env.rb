@@ -8,15 +8,15 @@ require 'test/unit/assertions'
 require 'features/support/create_screenshot_folder'
 require 'features/support/screenshot'
 require 'cucumber/formatter/unicode'
-
-
 include Test::Unit::Assertions 
 
 #set browser : ie / firefox / safari / chrome / celerity
-    
-bro = "firefox"
-                  
-case bro
+BROWSER = "firefox"
+
+#set a fixture file with translation separate with space "test_de test_en"
+LANGUAGE = %w/sanity_check_de/
+                 
+case BROWSER
   when "safari"
     require 'safariwatir'
     Browser = Watir::Safari.new
@@ -26,8 +26,8 @@ case bro
     require 'firewatir'
     Browser = FireWatir::Firefox.new  
 
-   #require 'watir-webdriver'
-   #Browser = Watir::Browser.new :firefox
+ #  require 'watir-webdriver'
+ #  Browser = Watir::Browser.new :firefox
      # require 'vapir'
      # require 'vapir-firefox'
      #  Browser = Vapir::Firefox.new
@@ -54,20 +54,15 @@ end
                         
 #create screenshot folder function
 screenshot_path = create_screenshot_folder
-
-#$table = {}
-
-#define which fixture should be loaded         
-                   
-  
+                                             
  browser = Browser
  # "before all"
  Before do    
    @table = {}
    
    @screenshot_path = screenshot_path
-   
-   @fixtures = %w/sanity_check_de/
+
+   @fixtures = LANGUAGE
    @fixtures.each { |table| @table.merge! YAML.load_file("features/fixtures/#{table}.yml") } 
    
    @browser = browser
