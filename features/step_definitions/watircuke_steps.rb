@@ -1,15 +1,15 @@
-Transform /^\:\w*\.\w*$/ do |step_arg|     
-  what = parse_from_yaml(step_arg) if fixture?(step_arg)  
-end                                                               
+Transform /^\:\w*\.\w*$/ do |step_arg|
+  what = parse_from_yaml(step_arg) if fixture?(step_arg)
+end
 
 Given /I click the "(.*)" button/ do |what|
-  find_button(what) 
+  find_button(what)
 end
 
 Given /I click the "(.*)" checkbox/ do |what|
   find_checkbox(what)
 end
-                             
+
 Given /I click the "(.*)" div/ do |what|
   find_div(what)
 end
@@ -18,7 +18,7 @@ Given /I click the "(.*)" image/ do |what|
   find_image(what)
 end
 
-Given /I click the "(.*)" link(.*)/ do |what, alert| 
+Given /I click the "(.*)" link(.*)/ do |what, alert|
   if alert == " with alert"
     click_alert_button_ok
   end   
@@ -34,7 +34,7 @@ Given /I click the "(.*)" radio button/ do |what|
   find_radio_button(what)
 end
 
-Given /I click row "(.*)" in the "(.*)" table/ do |row, column, what| 
+Given /I click row "(.*)" in the "(.*)" table/ do |row, column, what|
   find_table(row, column, what)
 end
 
@@ -53,29 +53,29 @@ end
 
 
 Then /I refresh the page/ do
-  @browser.refresh 
+  @browser.refresh
   @browser.wait
 end
 
 Then /I should see the "(.*)" image/ do |what|
-    assert(@browser.image(:src, /what/).height.to_i == 0) ? false : true 
-end 
+  assert(@browser.image(:src, /what/).height.to_i == 0) ? false : true
+end
 
-Then /I take a screenshot/ do 
+Then /I take a screenshot/ do
   embed_screenshot("#{@screenshot_path}screenshot-#{Time.new.to_i}")
 end
 
-Then /I should see the span "(.*)" with "(.*)"/ do |span, what| 
+Then /I should see the span "(.*)" with "(.*)"/ do |span, what|
   find_span(span, what)
 end
 
 Then /^I should (NOT )?see the text "(.*)"$/ do |visibility, what|      
-   expected = (visibility.to_s.strip == 'NOT') ? @browser.text.index(what).should == nil  : @browser.text.index(what).should >= 0
+  expected = (visibility.to_s.strip == 'NOT') ? @browser.text.index(what).should == nil  : @browser.text.index(what).should >= 0
 end
-
-Then /^It should (NOT )?contains the "([^\"]*)"$/ do |visibility, what|  
-    expected = (visibility.to_s.strip == 'NOT') ? @browser.html.index(what).should == nil  : @browser.html.index(what).should >= 0
-end     
+                                   
+Then /^It should (NOT )?contains the html "([^\"]*)"$/ do |visibility, what|
+  expected = (visibility.to_s.strip == 'NOT') ? @browser.html.index(what).should == nil  : @browser.html.index(what).should >= 0
+end
 
 Then /^I debug$/ do
   debugger
@@ -97,7 +97,6 @@ end
 Given /^I sleep for "([^\"]*)"$/ do |seconds|
   sleep seconds.to_i
 end
-Given /^I check all objects$/ do 
+Given /^I check all objects$/ do
   create_output
 end
-
