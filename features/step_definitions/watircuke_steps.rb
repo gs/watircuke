@@ -69,17 +69,12 @@ Then /I should see the span "(.*)" with "(.*)"/ do |span, what|
   find_span(span, what)
 end
 
-Then /^I should (NOT )?see the text "(.*)"$/ do |visibility, what|
-  if @browser.class.to_s=="Watir::IE" 
-   expected = (visibility.to_s.strip == 'NOT') ? assert_false(@browser.contains_text(what)) : assert(@browser.contains_text(what))     
- else
-   expected = (visibility.to_s.strip == 'NOT') ? @browser.text.index(what).should == nil  : @browser.text.index(what).should_not == nil
- end
-
+Then /^I should (NOT )?see the text "(.*)"$/ do |visibility, what|      
+   expected = (visibility.to_s.strip == 'NOT') ? @browser.text.index(what).should == nil  : @browser.text.index(what).should >= 0
 end
 
-Then /^I should (NOT )?see the sentence "([^\"]*)"$/ do |visibility, what|  
-  expected = (visibility.to_s.strip == 'NOT') ? assert_not_equal(@browser.contains_text(what), what) : assert_equal(@browser.contains_text(what), what)
+Then /^It should (NOT )?contains the "([^\"]*)"$/ do |visibility, what|  
+    expected = (visibility.to_s.strip == 'NOT') ? @browser.html.index(what).should == nil  : @browser.html.index(what).should >= 0
 end     
 
 Then /^I debug$/ do
