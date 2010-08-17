@@ -86,7 +86,7 @@ Given /I am redirected to "(.*)"/ do |what|
   assert_equal(@environment + what, url)
 end
 
-Given /^I am on (.+)$/ do |page_name| 
+Given /^I am on the "(.+)" page$/ do |page_name| 
   @browser.goto(path_to(page_name))  #This step links up with the "path_to" method found in support/paths.rb
 end
 
