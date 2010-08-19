@@ -7,3 +7,6 @@ dictionary
 *.sh
 *.html
 test_results/*
+.redcar/*
+features/step_definitions/*
+watir/*
