@@ -32,7 +32,8 @@ when "safari"
 
 when "firefox"
 
-  require 'watir/firewatir/lib/firewatir'
+  #require 'watir/firewatir/lib/firewatir'
+  require 'firewatir'
   Browser = FireWatir::Firefox.new
 
   #   require 'watir-webdriver'
