@@ -16,7 +16,7 @@ include Test::Unit::Assertions
              
 
 #read the config.yml file found in config/config.yml
-#--------------------------------------------------
+##--------------------------------------------------
 read_config
 
 BROWSER = @browser                            
