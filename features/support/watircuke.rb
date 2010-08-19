@@ -282,8 +282,9 @@ module WatirCukeHelpers
   end
 
   def parse_from_yaml(with)
-    w = with.gsub(":","").split(".")
-    return @table[w[0]][w[1]]
+      w = with.gsub(":","").split(".")
+      puts "<li class=\"step passed\">Exchanged: <b>#{with} => #{@table[w[0]][w[1]]}</b></li>"
+      return @table[w[0]][w[1]]
   end
 
   #validate if this is a fixture
@@ -294,7 +295,6 @@ module WatirCukeHelpers
   def calculate_date(datevalue)
     return Chronic.parse(datevalue).strftime("%d-%m-%Y") unless Chronic.parse(datevalue).nil?
   end
-
 end
 
 World(WatirCukeHelpers)

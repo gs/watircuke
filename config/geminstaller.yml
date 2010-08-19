@@ -19,3 +19,5 @@ gems:
 - name: ruby-debug
 - name: watir-webdriver
 - name: rspec
+- name: nokogiri
+- name: open-uri

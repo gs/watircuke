@@ -1,5 +1,5 @@
 Transform /^\:\w*\.\w*$/ do |step_arg|
-  what = parse_from_yaml(step_arg) if fixture?(step_arg)
+    what = parse_from_yaml(step_arg)   if fixture?(step_arg)
 end
 
 Given /I click the "(.*)" button/ do |what|
@@ -72,7 +72,7 @@ end
 Then /^I should (NOT )?see the text "(.*)"$/ do |visibility, what|      
   expected = (visibility.to_s.strip == 'NOT') ? @browser.text.index(what).should == nil  : @browser.text.index(what).should >= 0
 end
-                                   
+
 Then /^It should (NOT )?contains the html "([^\"]*)"$/ do |visibility, what|
   expected = (visibility.to_s.strip == 'NOT') ? @browser.html.index(what).should == nil  : @browser.html.index(what).should >= 0
 end

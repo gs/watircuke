@@ -60,18 +60,30 @@ on[tab]	 	I am on the "server" page
 goto[tab]	I go to "some url"
 sleep[tab]	I sleep for "some"
 
-     
-Fixtures/Language files can be dropped into : 'features/fixtures' path.
-After adding new file drop its name into env.rb file(17th line) to LANGUAGE constant variable.
-
-To input its value to gherkin all you have to do is:
- 
-I click the ":data_example.name" link   
-
-its important to have ':' in front of :table.column notation
-
 
 tag @new_feature - putted above the scenario will force watircuke to make a screenshot after each action.
+     
+
+Configuration:
+
+Configuration is kept in the config/config.yml file
+
+- You can specify running browser using one of : ie, firefox, chrome, safari
+browser: ie
+
+- **Fixtures/Language files separated with " " (files which contains translations without the .yml extension) 
+fixtures: login logout
+                                                                                                              
+- true / false for check for missing translation
+check_translation: true
+
+- Only will work if above check_translation is set to true.
+Below is a template for regexp which will look after each scenario for missing translations ie: @
+
+translation_tag:  "@[0-9a-zA-Z]+_[0-9a-zA-Z]+"   - this will match every string on page which fits to template                                                                   
+   
+
+
 
 How to run:
 
@@ -80,8 +92,19 @@ cucumber . -f html -o output.html
 
 *screenshot - will be dropped in test_results/test_datetime/screenshots/ - this structure is created each time cucumber is being run
 
+** Fixtures/Language files can be dropped into : 'features/fixtures' path. 
+They need to be in YML format like:
+login:
+  login_button: Sign up 
 
-**cukewatir maximizes the Gherkin speak and minimizes the Watir code.          
+Then in scenario you have to use it like:
+ 
+I click the ":login.login_button" button   
+
+That will import the value from attached fixture file.
+
+
+***cukewatir maximizes the Gherkin speak and minimizes the Watir code.          
 
 License:
 
