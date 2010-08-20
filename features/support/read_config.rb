@@ -5,8 +5,8 @@ def read_config
     @browser = config_file['config']['browser']
     @translation_tag = config_file['config']['translation_tag']
     @check_translation = config_file['config']['check_translation']
-    @fixtures = config_file['config']['fixtures']
+    @fixtures = config_file['config']['fixtures'].split(" ")
   rescue Exception => e
-    puts e
+    puts "#{e}".red
   end
 end
