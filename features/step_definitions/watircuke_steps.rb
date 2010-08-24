@@ -54,7 +54,7 @@ end
 
 Then /I refresh the page/ do
   @browser.refresh
-  @browser.wait
+#  @browser.wait
 end
 
 Then /I should see the "(.*)" image/ do |what|

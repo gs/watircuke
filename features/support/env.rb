@@ -25,7 +25,7 @@ begin
   TRANSLATION_TAG = @translation_tag
   LANGUAGES = @fixtures
 
-  #--------------------------------------------------
+  ##-------------------------------------------------
   case BROWSER
   when "safari"
     require 'safariwatir'
@@ -33,15 +33,16 @@ begin
 
   when "firefox"
 
-    require 'watir/firewatir/lib/firewatir'
-    #  require 'firewatir'
-    Browser = FireWatir::Firefox.new
+    # require 'watir/firewatir/lib/firewatir'
+    # #  require 'firewatir'
+    # Browser = FireWatir::Firefox.new
 
-    #   require 'watir-webdriver'
-    #  Browser = Watir::Browser.new :firefox
+     require 'watir-webdriver'
+    Browser = Watir::Browser.new :firefox
     #      require 'vapir'
     # require 'vapir-firefox'
     # Browser = Vapir::Firefox.new
+    # 
     # class Vapir::Firefox::Element
     #   def type_keys
     #     false
