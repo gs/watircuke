@@ -1,8 +1,8 @@
 config:                          
     #browser can be -> firefox, ie, chrome, safari
-    browser: firefox 
+    browser: firefox         
     #fixtures are languages.yml files
-    fixtures: sanity_check_de
+    fixtures: sanity_check_pl
     #this is a regexp template for validation on page for missing translations
     translation_tag: "@[0-9a-zA-Z]+_[0-9a-zA-Z]+"
     #true/false = check if there are missing translations on scenario end
