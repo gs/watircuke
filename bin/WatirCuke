@@ -14,7 +14,7 @@ if [[ "$1" =~ \@ ]]; then
 	killall -9 firefox-bin             
 	
 	echo "Starting the test.."
-	cucumber -t $1 -f html -o $2.html
+	cucumber -t $1 -f html > $2.html
 	./bin/run_after_test $2.html
 	echo 
 	echo "Finished"
@@ -25,7 +25,7 @@ elif [[ "$1" =~ feature ]]; then
 	killall -9 firefox-bin             
 	
 	echo "Starting the test.."
-	cucumber $1 -f html -o $2.html
+	cucumber $1 -f html > $2.html
 	./bin/run_after_test $2.html 
 	echo
 	echo "Finished"

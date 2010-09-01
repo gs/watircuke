@@ -33,13 +33,14 @@ begin
 
   when "firefox"
 
-    # require 'watir/firewatir/lib/firewatir'
-    # #  require 'firewatir'
-    # Browser = FireWatir::Firefox.new
+     require 'firewatir'
 
-     require 'watir-webdriver'
-    Browser = Watir::Browser.new :firefox
-    #      require 'vapir'
+#    require 'watir/firewatir/lib/firewatir'
+    Browser = FireWatir::Firefox.new
+
+       #  require 'watir-webdriver'
+       # Browser = Watir::Browser.new :firefox
+
     # require 'vapir-firefox'
     # Browser = Vapir::Firefox.new
     # 
@@ -79,6 +80,7 @@ begin
     @screenshot_path = screenshot_path
 
     LANGUAGES.each { |table| @table.merge! YAML.load_file("features/fixtures/#{table}.yml") }
+    @table.merge! YAML.load_file("config/config.yml")
 
     @browser = browser
     @environment = "http://"
