@@ -7,15 +7,15 @@ echo
 
 
 
-if [ "$1" == "-t" ]; then
-	echo "$0 $1 $2 $3" 
+if [[ "$1" =~ \@ ]]; then
+	echo "$0 $1 $2" 
 	echo	
 	echo "kill firefox if its being run"                             
 	killall -9 firefox-bin             
 	
 	echo "Starting the test.."
-	cucumber $1 $2 -f html -o $3.html
-	./bin/run_after_test $3.html
+	cucumber -t $1 -f html -o $2.html
+	./bin/run_after_test $2.html
 	echo 
 	echo "Finished"
 elif [[ "$1" =~ feature ]]; then
