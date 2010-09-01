@@ -95,6 +95,8 @@ How to run:
 
 All above will produce the html output and move it into test_results folder
 
+3) WatirCuke can be run with standard CUCUMBER : cucumber -t @tags -f format -o output
+
 *screenshot - will be dropped in test_results/test_datetime/screenshots/ - this structure is created each time cucumber is being run
 
 ** Fixtures/Language files can be dropped into : 'features/fixtures' path. 
