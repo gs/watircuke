@@ -1,0 +1,44 @@
+#!/bin/bash        
+     
+clear
+echo
+echo "Be sure that config/config.yml file contains good translation file"
+echo 
+
+
+
+if [ "$1" == "-t" ]; then
+	echo "$0 $1 $2 $3" 
+	echo	
+	echo "kill firefox if its being run"                             
+	killall -9 firefox-bin             
+	
+	echo "Starting the test.."
+	cucumber $1 $2 -f html -o $3.html
+	./bin/run_after_test $3.html
+	echo 
+	echo "Finished"
+elif [[ "$1" =~ feature ]]; then
+	echo "$0 $1 $2"
+	echo
+	echo "kill firefox if its being run"                             
+	killall -9 firefox-bin             
+	
+	echo "Starting the test.."
+	cucumber $1 -f html -o $2.html
+	./bin/run_after_test $2.html 
+	echo
+	echo "Finished"
+else
+	echo "How to run me:"               
+	echo ""
+	echo "1) using tags: " 
+	echo "./start -t @tag1,@tag2 output"
+	echo "example: ./start -t @sc_en sc_en"
+	echo ""
+	echo "2) without tags: "
+	echo "./start features/test.feature output" 
+	echo "example: ./start features/test.feature output"
+	echo
+fi
+	
