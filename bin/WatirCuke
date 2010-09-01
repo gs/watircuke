@@ -33,12 +33,12 @@ else
 	echo "How to run me:"               
 	echo ""
 	echo "1) using tags: " 
-	echo "./start -t @tag1,@tag2 output"
-	echo "example: ./start -t @sc_en sc_en"
+	echo "./WatirCuke -t @tag1,@tag2 output"
+	echo "example: ./WatirCuke -t @sc_en sc_en"
 	echo ""
 	echo "2) without tags: "
-	echo "./start features/test.feature output" 
-	echo "example: ./start features/test.feature output"
+	echo "./WatirCuke features/test.feature output" 
+	echo "example: ./WatirCuke features/test.feature output"
 	echo
 fi
 	

@@ -85,10 +85,15 @@ translation_tag:  "@[0-9a-zA-Z]+_[0-9a-zA-Z]+"   - this will match every string 
 
 
 
-How to run:
+How to run:                  
 
-cucumber . -f html -o output.html
- 
+1) WatirCuke can be run with tags like:
+./WatirCuke -t @tag1,@tag2 output          
+
+2) Can be run with feature files:
+./WatirCuke features/file.feature output
+
+All above will produce the html output and move it into test_results folder
 
 *screenshot - will be dropped in test_results/test_datetime/screenshots/ - this structure is created each time cucumber is being run
 
