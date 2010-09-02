@@ -18,8 +18,7 @@ module WatirCukeHelpers
 
     when @browser.button(:index, what.to_i).exists?
     then @browser.button(:index, what.to_i).click
-
-
+      
       #			 when @browser.button(:text, /#{what}/).exists?
       #						then @browser.button(:text, /#{what}/).click
     else
@@ -297,6 +296,10 @@ module WatirCukeHelpers
     w = with.gsub(":","").split(".")
     puts "<li class=\"step passed\">Exchanged: <b>#{with} => #{@table[w[0]][w[1]]}</b></li>"
     return @table[w[0]][w[1]]
+  end
+
+  def scenario_time(time)                                                       
+    puts "<h3 id=\"scenario_1\" style=\"cursor: pointer; \"><span class=\"keyword\">Scenario took:</span> <span class=\"val\">#{Time.now - time}</span></h3>"
   end
 
   #validate if this is a fixture

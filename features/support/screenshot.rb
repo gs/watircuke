@@ -6,7 +6,6 @@
 # ruby library or command line tool to take pictures.
 #
 module Screenshots      
-  
   if Cucumber::OS_X
     def embed_screenshot(id)
       `screencapture -t png #{id}.png`
@@ -18,7 +17,6 @@ module Screenshots
     include Watir::ScreenCapture
     def embed_screenshot(id)
       screen_capture("#{id}.jpg", true)
-      embed("#{id}.jpg", "image/jpeg")
     end
   else
     # Other platforms...
@@ -29,9 +27,9 @@ module Screenshots
 end
 World(Screenshots)
 
-After do  |scenario|
-    embed_screenshot("#{@screenshot_path}screenshot-#{Time.new.to_i}")  if scenario.failed?
-end
+# After do |scenario|
+#    embed_screenshot("#{@screenshot_path}screenshot-#{Time.new.to_i}")  if scenario.failed?
+# end        
 
 # Other variants:
 #

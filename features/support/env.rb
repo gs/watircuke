@@ -33,13 +33,13 @@ begin
 
   when "firefox"
 
-     require 'firewatir'
+#     require 'firewatir'
 
 #    require 'watir/firewatir/lib/firewatir'
-    Browser = FireWatir::Firefox.new
+#    Browser = FireWatir::Firefox.new
 
-       #  require 'watir-webdriver'
-       # Browser = Watir::Browser.new :firefox
+    require 'watir-webdriver'
+    Browser = Watir::Browser.new :firefox
 
     # require 'vapir-firefox'
     # Browser = Vapir::Firefox.new
@@ -84,11 +84,14 @@ begin
 
     @browser = browser
     @environment = "http://"
+    @time = Time.now
   end
 
-  #after each scenario checking for missing translation on page
-  After do
+  #after each scenario: checking for missing translation on page, count scenario time, makes screenshot if failed
+  After do |scenario|        
     check_missing_translations if CHECK_TRANSLATIONS
+    scenario_time(@time)
+    embed_screenshot("#{@screenshot_path}screenshot-#{Time.new.to_i}") if scenario.failed?
   end
 
   # after each step which is called '@new_feature' make a screenshot
