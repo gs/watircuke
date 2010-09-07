@@ -1,33 +1,26 @@
 #!/bin/bash        
      
-clear
+#clear
 echo
 echo "Be sure that config/config.yml file contains good translation file"
 echo 
 
 
 
-if [[ "$1" =~ \@ ]]; then
+if [[ "$1" =~ \@ ]] || [[ "$1" =~ features ]]; then
 	echo "$0 $1 $2" 
 	echo	
 	echo "kill firefox if its being run"                             
 	killall -9 firefox-bin             
 	
 	echo "Starting the test.."
-	cucumber -t $1 -f html > $2.html
+	if [[ "$1" =~ \@ ]]; then
+	   cucumber -t $1 --guess -f html > $2.html
+	else                                       
+		cucumber $1 --guess -f html > $2.html
+	fi
 	./bin/run_after_test $2.html
 	echo 
-	echo "Finished"
-elif [[ "$1" =~ feature ]]; then
-	echo "$0 $1 $2"
-	echo
-	echo "kill firefox if its being run"                             
-	killall -9 firefox-bin             
-	
-	echo "Starting the test.."
-	cucumber $1 -f html > $2.html
-	./bin/run_after_test $2.html 
-	echo
 	echo "Finished"
 else
 	echo "How to run me:"               
