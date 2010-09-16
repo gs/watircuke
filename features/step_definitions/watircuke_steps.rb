@@ -1,10 +1,18 @@
 Transform /^\:\w*\.\w*$/ do |step_arg|
-    what = parse_from_yaml(step_arg)   if fixture?(step_arg)
+  what = parse_from_yaml(step_arg)   if fixture?(step_arg)
 end
 
-Given /I click the "(.*)" button/ do |what|
+# Given /I click the "(.*)" button/ do |what|
+#   find_button(what)
+# end
+
+Given /I click the "(.*)" button(.*)/ do |what, alert|
+  if alert == " with alert"
+    click_alert_button_ok
+  end   
   find_button(what)
 end
+
 
 Given /I click the "(.*)" checkbox/ do |what|
   find_checkbox(what)
@@ -54,7 +62,7 @@ end
 
 Then /I refresh the page/ do
   @browser.refresh
-#  @browser.wait
+  #  @browser.wait
 end
 
 Then /I should see the "(.*)" image/ do |what|
@@ -62,7 +70,8 @@ Then /I should see the "(.*)" image/ do |what|
 end
 
 Then /I take a screenshot/ do
-  embed_screenshot("#{@screenshot_path}screenshot-#{Time.new.to_i}")
+   t = Time.new.to_i
+   embed_screenshot("#{@screenshot_path}screenshot-#{t}", "screenshots/screenshot-#{t}")
 end
 
 Then /I should see the span "(.*)" with "(.*)"/ do |span, what|

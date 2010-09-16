@@ -7,20 +7,20 @@
 #
 module Screenshots      
   if Cucumber::OS_X
-    def embed_screenshot(id)
+    def embed_screenshot(id, to_html)
       `screencapture -t png #{id}.png`
-      embed("#{id}.png", "image/png")
+      embed("#{to_html}.png", "image/png")
     end
   elsif Cucumber::WINDOWS
     # http://wtr.rubyforge.org/rdoc/classes/Watir/ScreenCapture.html
     require 'watir/screen_capture'
     include Watir::ScreenCapture
-    def embed_screenshot(id)
+    def embed_screenshot(id, to_html)
       screen_capture("#{id}.jpg", true)
     end
   else
     # Other platforms...
-    def embed_screenshot(id)
+    def embed_screenshot(id, to_html)
       STDERR.puts "Sorry - no screenshots on your platform yet."
     end
   end

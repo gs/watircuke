@@ -26,24 +26,35 @@ begin
   LANGUAGES = @fixtures
 
   ##-------------------------------------------------
+
+
+  if Dir['test_results/*'].select{|x| File.directory?(x)}.map{|x| [File.ctime(x), x]}.sort_by{|x| x.first}.last
+    screenshot_path = Dir['test_results/*'].select{|x| File.directory?(x)}.map{|x| [File.ctime(x), x]}.sort_by{|x| x.first}.last.last.inspect
+    screenshot_path += "/screenshots/"
+    screenshot_path.gsub!("\"","")
+  else
+    screenshot_path = "test_results/screenshots/"
+  end
+
   case BROWSER
   when "safari"
     require 'safariwatir'
     Browser = Watir::Safari.new
+    #Browser.set_fast_speed = true
 
   when "firefox"
 
-#     require 'firewatir'
+    #     require 'firewatir'
 
-#    require 'watir/firewatir/lib/firewatir'
-#    Browser = FireWatir::Firefox.new
-
+    # require 'watir/firewatir/lib/firewatir'
+    #   Browser = FireWatir::Firefox.new
+    #
     require 'watir-webdriver'
     Browser = Watir::Browser.new :firefox
-
+    #     #
     # require 'vapir-firefox'
     # Browser = Vapir::Firefox.new
-    # 
+    #
     # class Vapir::Firefox::Element
     #   def type_keys
     #     false
@@ -71,7 +82,7 @@ begin
 
 
   #create screenshot folder function
-  screenshot_path = create_screenshot_folder
+  #  screenshot_path = create_screenshot_folder
 
   browser = Browser
   # "before all"
@@ -88,15 +99,19 @@ begin
   end
 
   #after each scenario: checking for missing translation on page, count scenario time, makes screenshot if failed
-  After do |scenario|        
+  After do |scenario|
     check_missing_translations if CHECK_TRANSLATIONS
     scenario_time(@time)
-    embed_screenshot("#{@screenshot_path}screenshot-#{Time.new.to_i}") if scenario.failed?
+    t = Time.new.to_i
+    embed_screenshot("#{@screenshot_path}screenshot-#{t}", "screenshots/screenshot-#{t}") if scenario.failed?
+    #    embed_screenshot("screenshots/screenshot-#{Time.new.to_i}") if scenario.failed?
+
   end
 
   # after each step which is called '@new_feature' make a screenshot
   AfterStep('@new_feature') do
-    embed_screenshot("#{@screenshot_path}screenshot-#{Time.new.to_i}")
+    t = Time.new.to_i
+    embed_screenshot("#{@screenshot_path}screenshot-#{t}", "screenshots/screenshot-#{t}")
   end
 rescue Exception => ex
   puts "#{ex}".red

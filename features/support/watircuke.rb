@@ -18,7 +18,7 @@ module WatirCukeHelpers
 
     when @browser.button(:index, what.to_i).exists?
     then @browser.button(:index, what.to_i).click
-      
+
       #			 when @browser.button(:text, /#{what}/).exists?
       #						then @browser.button(:text, /#{what}/).click
     else
@@ -97,11 +97,12 @@ module WatirCukeHelpers
     when @browser.link(:id, /#{what}/).exists?
     then @browser.link(:id, /#{what}/).click
 
+    when @browser.link(:title, what).exists?
+    then @browser.link(:title, what).click
+
     when @browser.link(:href, /#{what}/).exists?
     then	@browser.link(:href, /#{what}/).click
 
-    when @browser.link(:title, what).exists?
-    then @browser.link(:title, what).click
     else
       fail("Sorry, I wasn't able to find the " + "'#{what}'" + " element ")
     end
@@ -277,7 +278,7 @@ module WatirCukeHelpers
     elsif @browser.class.to_s == "FireWatir::Firefox"
       @browser.startClicker("OK", 3)
     elsif @browser.class.to_s == "Watir::Safari"
-      fail("JS clicking not availalble for Safari Watir currently...")
+#      $fail("JS clicking not availalble for Safari Watir currently...")
     else
       @browser.execute_script("window.alert = function(msg) { return true; }")
       @browser.execute_script("window.confirm = function(msg) { return true; }")
@@ -298,7 +299,7 @@ module WatirCukeHelpers
     return @table[w[0]][w[1]]
   end
 
-  def scenario_time(time)                                                       
+  def scenario_time(time)
     puts "<h3 id=\"scenario_1\" style=\"cursor: pointer; \"><span class=\"keyword\">Scenario took:</span> <span class=\"val\">#{Time.now - time}</span></h3>"
   end
 
