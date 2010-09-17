@@ -16,7 +16,9 @@ module Screenshots
     require 'watir/screen_capture'
     include Watir::ScreenCapture
     def embed_screenshot(id, to_html)
-      screen_capture("#{id}.jpg", true)
+      id = Dir.pwd.gsub("/","\\") + "\\" + id.gsub("/","\\")
+      screen_capture("#{id}.jpg", true)   
+      embed("#{to_html}.jpg", "image/jpg")
     end
   else
     # Other platforms...

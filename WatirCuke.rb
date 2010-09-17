@@ -28,19 +28,21 @@ class RunMe
       puts "Did not found the test.".red
       puts 
       puts "You could run me with:"
-      puts "./run_me.rb @tag output".green
-      puts ""
+      puts "./WatirCuke.rb @tag output".green
+      puts "or"
+      puts "./WatirCuke.rb features/my_test.feature output".green
+      puts " "
       @tests.collect! {|x| x + ", " }
       print "or with any of the tests: "
       print "#{@tests}".yellow
       puts
-      puts "./run_me.rb sc_live_en".green
+      puts "./WatirCuke.rb sc_live_en".green
     end
   end
 
   def setup(folder)
     t=Time.now.strftime("%y%m%d%H%M")
-    folder = create_screenshot_folder("#{folder}", t)
+    create_screenshot_folder("#{folder}", t)
   end
 
   def name_the_test

@@ -29,9 +29,9 @@ begin
 
 
   if Dir['test_results/*'].select{|x| File.directory?(x)}.map{|x| [File.ctime(x), x]}.sort_by{|x| x.first}.last
-    screenshot_path = Dir['test_results/*'].select{|x| File.directory?(x)}.map{|x| [File.ctime(x), x]}.sort_by{|x| x.first}.last.last.inspect
-    screenshot_path += "/screenshots/"
-    screenshot_path.gsub!("\"","")
+    screenshot_path = (Dir['test_results/*'].select{|x| File.directory?(x)}.map{|x| [File.ctime(x), x]}.sort_by{|x| x.first}.last.last.inspect + "/screenshots/").gsub!("\"","")
+    # screenshot_path += "/screenshots/"
+    # screenshot_path.gsub!("\"","")
   else
     screenshot_path = "test_results/screenshots/"
   end
@@ -47,11 +47,11 @@ begin
     #     require 'firewatir'
 
     # require 'watir/firewatir/lib/firewatir'
-    #   Browser = FireWatir::Firefox.new
-    #
+    #     Browser = FireWatir::Firefox.new
+      #
     require 'watir-webdriver'
     Browser = Watir::Browser.new :firefox
-    #     #
+    #     #     #
     # require 'vapir-firefox'
     # Browser = Vapir::Firefox.new
     #
@@ -100,12 +100,10 @@ begin
 
   #after each scenario: checking for missing translation on page, count scenario time, makes screenshot if failed
   After do |scenario|
-    check_missing_translations if CHECK_TRANSLATIONS
-    scenario_time(@time)
     t = Time.new.to_i
+    check_missing_translations if CHECK_TRANSLATIONS                                                         
     embed_screenshot("#{@screenshot_path}screenshot-#{t}", "screenshots/screenshot-#{t}") if scenario.failed?
-    #    embed_screenshot("screenshots/screenshot-#{Time.new.to_i}") if scenario.failed?
-
+    scenario_time(@time)
   end
 
   # after each step which is called '@new_feature' make a screenshot
