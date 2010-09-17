@@ -22,7 +22,7 @@ class RunMe
       folder = setup(ARGV[0])
       system "cucumber --guess -t @#{test_name} -f html > #{folder}/../#{ARGV[0]}.html"
     elsif ((("#{ARGV[0]}" =~/\@/) || ("#{ARGV[0]}" =~ /features/)) && (!"#{ARGV[1]}".nil?))
-      folder = setup(ARGV[1] ||= ARGV[0])
+      folder = setup(ARGV[1] ||= ARGV[0].gsub("\@",""))
       system "cucumber --guess -t #{ARGV[0]} -f html > #{folder}/../#{ARGV[1]}.html"
     else
       puts "Did not found the test.".red
