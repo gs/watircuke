@@ -14,18 +14,25 @@ This will install all necessary gems.
 
 Then install JSSH for FireWatir:
 http://wiki.openqa.org/display/WTR/FireWatir+Installation
+
+
+TextMate or Redcar snippets:
                                                          
-For MacOSX I recommend to install:
-Textmate syntax recognition and snippets for Cucumber
+Any of the editors like TextMate or Redcar syntax recognition and snippets for Cucumber
 
 http://github.com/bmabey/cucumber-tmbundle
 
 
 To have WatirCuke support snippets just unpack the WatirCuke.tmbundle.zip which is in my github in TextMateBundles repo and place it in
 
+TextMate:
 ~/Library/Application Support/TextMate/Bundles
 
 Then in TextMate -> Bundles -> Bundle Editor -> Reload Bundles
+
+Redcar:
+~/.redcar/Bundles/
+
 
 Snippets should work for .feature files.
 

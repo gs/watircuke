@@ -1,5 +1,5 @@
-features/*.feature
-features/fixtures/*
+features/*.feature 
+features/fixtures/* 
 features/support/paths.rb
 dictionary
 .DS_Store
