@@ -309,7 +309,7 @@ module WatirCukeHelpers
   end
 
   def calculate_date(datevalue)
-    return Chronic.parse(datevalue).strftime("%d-%m-%Y") unless Chronic.parse(datevalue).nil?
+    return Chronic.parse(datevalue).strftime("%d-%m-%Y") if not Chronic.parse(datevalue).nil?
   end
 end
 
