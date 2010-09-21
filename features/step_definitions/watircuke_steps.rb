@@ -51,9 +51,14 @@ Given /I select "(.*)" from "(.*)"/ do |with, what|
 end
 
 Given /I fill in the text field "(.*)" with "(.*)"/ do |tf_name, what| 
-    what = calculate_date(what) if calculate_date(what)
     find_text_field(tf_name, what)
 end
+
+Given /I fill in the date field "(.*)" with "(.*)"/ do |tf_name, what| 
+    find_text_field(tf_name, calculate_date(what))
+end
+
+
 
 Given /I fill in the file field "(.*)" with "(.*)"/ do |ff_name, what|    
   find_file_field(ff_name, what)
@@ -86,6 +91,16 @@ Then /^It should (NOT )?contains the html "([^\"]*)"$/ do |visibility, what|
   expected = (visibility.to_s.strip == 'NOT') ? @browser.html.index(what).should == nil  : @browser.html.index(what).should >= 0
 end
 
+Then /I click the "(.*)" link until I see the text "(.*)"/ do |amount,click_link, what_to_see| 
+  find_link(click_link)
+    while !@browser.text.index(what_to_see) do
+          @browser.back
+          sleep 10        
+          find_link(click_link)
+   end                   
+  @browser.text.index(what_to_see) != nil
+end
+
 Then /^I debug$/ do
   debugger
 end
@@ -109,3 +124,6 @@ end
 Given /^I check all objects$/ do
   create_output
 end
+
+
+
