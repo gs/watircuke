@@ -91,7 +91,7 @@ Then /^It should (NOT )?contains the html "([^\"]*)"$/ do |visibility, what|
   expected = (visibility.to_s.strip == 'NOT') ? @browser.html.index(what).should == nil  : @browser.html.index(what).should >= 0
 end
 
-Then /I click the "(.*)" link until I see the text "(.*)"/ do |amount,click_link, what_to_see| 
+Then /I click the "(.*)" link until I see the text "(.*)"/ do |click_link, what_to_see| 
   find_link(click_link)
     while !@browser.text.index(what_to_see) do
           @browser.back
