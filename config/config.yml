@@ -1,6 +1,6 @@
 config:                          
     #browser can be -> firefox, ie, chrome, safari
-    browser: firefox         
+    browser: safari         
     #fixtures are languages.yml files
     fixtures: sanity_check_de
     #test urls
