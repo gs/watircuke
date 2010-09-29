@@ -26,12 +26,17 @@ Given /I click the "(.*)" image/ do |what|
   find_image(what)
 end
 
-Given /I click the "(.*)" link(.*)/ do |what, alert|
-  if alert == " with alert"
+Given /I click the "(.*)" link(.*)/ do |what, what2|
+  if what2 == " with alert"
     click_alert_button_ok
-  end   
+    find_link(what)
+  elsif what2 =~ /with index \d+/                    
+    index = what2.gsub(" with index ","")
+    @browser.link(:text => what, :index => index.to_i).click
+  else    
   find_link(what)
 end
+end                           
 
 Given /I onmouseover the "(.*)" link$/ do |what|   
   @browser.link(:text, /#{what}/).exists?
@@ -125,5 +130,10 @@ Given /^I check all objects$/ do
   create_output
 end
 
-
-
+Then /sleep until I see the text "(.*)"/ do |what| 
+# expected = @browser.text.index(what).should >= 0
+    while !@browser.text.index(what) do
+          sleep 1
+    end                   
+  @browser.text.index(what) != nil
+end
