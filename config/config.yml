@@ -1,13 +1,13 @@
 config:                          
     #browser can be -> firefox, ie, chrome, safari
-    browser: firefox         
+    browser: firefox
     #fixtures are languages.yml files
-    fixtures: sanity_check_de
+    fixtures: sanity_check_de       
     #test urls
-    server_lang: staging home de   
-    server_login_lang: staging login de
-    mybusiness_url: staging.qype.com/mybusiness/
-    admin_login: admin staging login
+    server_lang: bbc home de   
+    server_login_lang: bbc login de
+    mybusiness_url: www.betterbecool.com/mybusiness/
+    admin_login: admin bbc login
     #true/false = check if there are missing translations on scenario end
     check_translation: true
     #this is a regexp template for validation on page for missing translations
