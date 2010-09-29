@@ -66,7 +66,8 @@ Paths redirection:
 red[tab]	I am redirected to "some"  
 on[tab]	 	I am on the "server" page 
 goto[tab]	I go to "some url"
-sleep[tab]	I sleep for "some"
+sleep[tab]	I sleep for "some"   
+sleepu[tab] sleep until I see the text "text"
 
 
 tag @new_feature - putted above the scenario will force watircuke to make a screenshot after each action.
